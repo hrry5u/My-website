@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHAOS </title>
+    <title>CHAOS - Meme Coin</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,7 +16,7 @@
                 <div class="scratch scratch-2"></div>
                 <div class="scratch scratch-3"></div>
             </div>
-            <p class="subtitle">...........</p>
+            <p class="subtitle">The Ultimate Meme Coin</p>
             <div class="countdown" id="countdown">Launch Countdown: <span id="timer"></span></div>
         </header>
 
