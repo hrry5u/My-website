@@ -1,11 +1,10 @@
-#<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chaos - The Wildest Token Around</title>
+    <title>CHAOS - Meme Coin</title>
     <style>
-        /* CSS for Apple-like design */
         * {
             margin: 0;
             padding: 0;
@@ -14,272 +13,274 @@
         }
 
         body {
-            background: #f5f5f7;
-            color: #1d1d1f;
-            line-height: 1.6;
+            background: linear-gradient(45deg, #ff0000, #000000);
+            color: #fff;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* Header */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
         header {
+            text-align: center;
+            padding: 50px 0;
+            position: relative;
+        }
+
+        .chaos-title {
+            font-size: 5rem;
+            text-transform: uppercase;
+            animation: glitch 1s linear infinite;
+            text-shadow: 0 0 10px #ff0000;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes glitch {
+            2%, 64% {
+                transform: translate(2px, 0) skew(0deg);
+            }
+            4%, 60% {
+                transform: translate(-2px, 0) skew(0deg);
+            }
+            62% {
+                transform: translate(0, 0) skew(5deg);
+            }
+        }
+
+        .scratch-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .scratch {
+            position: absolute;
+            background: #ff0000;
+            transform-origin: center;
+            animation: scratchMove 2s infinite;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+        }
+
+        .scratch-1 {
+            width: 200px;
+            height: 10px;
+            top: 40%;
+            left: 30%;
+            transform: rotate(-45deg);
+            animation-delay: 0.2s;
+        }
+
+        .scratch-2 {
+            width: 150px;
+            height: 15px;
+            top: 60%;
+            left: 60%;
+            transform: rotate(30deg);
+            animation-delay: 0.4s;
+        }
+
+        .scratch-3 {
+            width: 180px;
+            height: 12px;
+            top: 50%;
+            left: 45%;
+            transform: rotate(-20deg);
+            animation-delay: 0.6s;
+        }
+
+        @keyframes scratchMove {
+            0%, 100% {
+                opacity: 0.3;
+                transform: translateY(0) rotate(-45deg);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(20px) rotate(-45deg);
+            }
+        }
+
+        .bio {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .token-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .info-card {
+            background: #ff0000;
+            padding: 20px;
+            border-radius: 5px;
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+        }
+
+        .heatmap {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(to right, #ff0000, #ff3333);
+            margin: 20px 0;
+            animation: heatPulse 2s infinite;
+        }
+
+        @keyframes heatPulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        .buy-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #000;
+            color: #ff0000;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+            animation: shake 0.5s infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        .chaos-letters {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+
+        .letter {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .letter:hover {
+            transform: translateY(-10px);
+            color: #ff6666;
+        }
+
+        .particles {
             position: fixed;
             top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 15px 0;
-            z-index: 100;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav .logo {
-            color: #fff;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-left: 30px;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #ff4500; /* Chaos-inspired orange-red */
-        }
-
-        /* Hero Section */
-        #hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(135deg, #000, #2f004f); /* Dark chaotic gradient */
-            color: #fff;
-        }
-
-        #hero h1 {
-            font-size: 64px;
-            margin-bottom: 20px;
-            animation: fadeIn 1s ease-in;
-        }
-
-        #hero p {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        #hero .fair-launch {
-            font-size: 18px;
-            color: #ff4500;
-            margin-bottom: 40px;
-        }
-
-        #hero .cta {
-            background: #ff4500;
-            color: #fff;
-            padding: 15px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        #hero .cta:hover {
-            background: #e63d00;
-        }
-
-        /* Section Styling */
-        section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        section h2 {
-            font-size: 48px;
-            margin-bottom: 40px;
-        }
-
-        /* Tokenomics */
-        #tokenomics .stats {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-
-        #tokenomics .stat {
-            flex: 1;
-            min-width: 200px;
-            margin: 20px;
-            padding: 20px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Roadmap */
-        #roadmap .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        #roadmap .timeline::before {
-            content: '';
-            position: absolute;
-            width: 2px;
-            height: 100%;
-            background: #ff4500;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        #roadmap .milestone {
-            position: relative;
-            width: 45%;
-            margin: 40px 0;
-            padding: 20px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        #roadmap .milestone:nth-child(odd) {
             left: 0;
-            text-align: right;
-        }
-
-        #roadmap .milestone:nth-child(even) {
-            left: 55%;
-            text-align: left;
-        }
-
-        /* Footer */
-        footer {
-            background: #1d1d1f;
-            color: #fff;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        footer a {
-            color: #ff4500;
-            text-decoration: none;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            #hero h1 { font-size: 40px; }
-            #hero p { font-size: 18px; }
-            #hero .fair-launch { font-size: 16px; }
-            #roadmap .milestone { width: 100%; left: 0 !important; text-align: center; }
-            #roadmap .timeline::before { display: none; }
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">Chaos</div>
-            <ul>
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#tokenomics">Tokenomics</a></li>
-                <li><a href="#roadmap">Roadmap</a></li>
-                <li><a href="#community">Community</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="particles" id="particles"></div>
+    <div class="container">
+        <header>
+            <h1 class="chaos-title">CHAOS</h1>
+            <div class="scratch-container">
+                <div class="scratch scratch-1"></div>
+                <div class="scratch scratch-2"></div>
+                <div class="scratch scratch-3"></div>
+            </div>
+            <p>The Ultimate Meme Coin</p>
+        </header>
 
-    <!-- Hero Section -->
-    <section id="hero">
-        <h1>Welcome to Chaos</h1>
-        <p>The Wildest Token in the Blockchain Universe</p>
-        <p class="fair-launch">It’s a fair launch</p>
-        <a href="#" class="cta">Buy Now</a>
-    </section>
+        <section class="bio">
+            <h2>About CHAOS</h2>
+            <p>Inspired by a Wall Street Stock market crash which has heatmap redder than the Trump coin hodler’s face who bought @ 60 USD</p>
+        </section>
 
-    <!-- Tokenomics Section -->
-    <section id="tokenomics">
-        <h2>Tokenomics</h2>
-        <div class="stats">
-            <div class="stat">
+        <section class="token-info">
+            <div class="info-card">
+                <h3>Token Name</h3>
+                <p>CHAOS</p>
+            </div>
+            <div class="info-card">
+                <h3>Token Address</h3>
+                <p>Not yet decided</p>
+            </div>
+            <div class="info-card">
                 <h3>Total Supply</h3>
-                <p>1,000,000,000</p>
+                <p>1 Billion Tokens</p>
             </div>
-            <div class="stat">
-                <h3>Burned</h3>
-                <p>20%</p>
+            <div class="info-card">
+                <h3>Launch</h3>
+                <p>100% Fair Launch</p>
             </div>
-            <div class="stat">
-                <h3>Staking Rewards</h3>
-                <p>5% APR</p>
-            </div>
+        </section>
+
+        <div class="heatmap"></div>
+
+        <div class="chaos-letters">
+            <span class="letter">C</span> - Crashing 
+            <span class="letter">H</span> - Hodl 
+            <span class="letter">A</span> - Ape 
+            <span class="letter">O</span> - Oh no 
+            <span class="letter">S</span> - Send it!
         </div>
-    </section>
 
-    <!-- Roadmap Section -->
-    <section id="roadmap">
-        <h2>Roadmap</h2>
-        <div class="timeline">
-            <div class="milestone">
-                <h3>Q1 2025</h3>
-                <p>Token Launch & Community Building</p>
-            </div>
-            <div class="milestone">
-                <h3>Q2 2025</h3>
-                <p>Exchange Listings & Meme Generator</p>
-            </div>
-            <div class="milestone">
-                <h3>Q3 2025</h3>
-                <p>NFT Integration & Staking</p>
-            </div>
-        </div>
-    </section>
+        <center><a href="#" class="buy-button">Buy CHAOS Now!</a></center>
+    </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>Join us on <a href="#">Discord</a> | <a href="#">Twitter</a> | <a href="#">Telegram</a></p>
-        <p>© 2025 Chaos. All rights reserved.</p>
-    </footer>
-
-    <!-- JavaScript for Interactivity -->
     <script>
-        // Smooth scrolling for nav links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+        // Particle animation
+        const particlesContainer = document.getElementById('particles');
+        
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.width = '5px';
+            particle.style.height = '5px';
+            particle.style.background = '#ff0000';
+            particle.style.borderRadius = '50%';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = Math.random() * 100 + 'vh';
+            particle.style.animation = `fall ${Math.random() * 3 + 2}s linear`;
+            
+            particlesContainer.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 5000);
+        }
+
+        setInterval(createParticle, 200);
+
+        // Add keyframe animation for falling particles
+        const styleSheet = document.styleSheets[0];
+        styleSheet.insertRule(`
+            @keyframes fall {
+                0% { transform: translateY(-100vh); opacity: 1; }
+                100% { transform: translateY(100vh); opacity: 0; }
+            }
+        `, styleSheet.cssRules.length);
     </script>
 </body>
 </html>
